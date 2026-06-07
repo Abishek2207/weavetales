@@ -77,7 +77,7 @@ export default function ProductDetail() {
   return (
     <div className="product-detail-wrap anim-fade-in">
       <Link href="/#collection" className="product-detail-back reveal">
-        <ArrowIcon /> Back to Collection
+        &larr; Back to Collection
       </Link>
 
       <div className="product-detail-grid">
