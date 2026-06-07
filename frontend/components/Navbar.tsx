@@ -21,16 +21,8 @@ export default function Navbar() {
     }}>
       <div style={{ maxWidth: 1200, margin: "0 auto", display: "flex", alignItems: "center", justifyContent: "space-between", height: 64 }}>
         {/* Logo */}
-        <Link href="/" style={{ textDecoration: "none" }}>
-          <div style={{ display: "flex", alignItems: "center", gap: "0.5rem" }}>
-            <span style={{ fontSize: "1.6rem" }}>🪡</span>
-            <span style={{ fontFamily: "var(--font-playfair, serif)", fontSize: "1.4rem", color: "var(--primary)", fontWeight: 700, letterSpacing: "-0.02em" }}>
-              WeaveTales
-            </span>
-            <span style={{ fontSize: "0.65rem", background: "var(--primary)", color: "#fff", padding: "1px 6px", borderRadius: 4, fontWeight: 600, letterSpacing: "0.05em", marginLeft: 2 }}>
-              AI
-            </span>
-          </div>
+        <Link href="/" className="navbar-logo" style={{ display: 'flex', alignItems: 'center', gap: '0.5rem' }}>
+          <img src="/logo.svg" alt="WeaveTales AI Logo" style={{ height: '40px', objectFit: 'contain' }} />
         </Link>
 
         {/* Desktop Links */}

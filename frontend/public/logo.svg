@@ -1,0 +1,35 @@
+<svg width="400" height="400" viewBox="0 0 400 400" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="purpleGradient" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#9d4edd" />
+      <stop offset="100%" stop-color="#5a189a" />
+    </linearGradient>
+    <linearGradient id="blueGradient" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#10002b" />
+      <stop offset="100%" stop-color="#240046" />
+    </linearGradient>
+  </defs>
+
+  <!-- WT Monogram -->
+  <!-- W shape (Purple) -->
+  <path d="M120 120 L160 210 L190 150 L220 210 L260 120 L230 120 L205 175 L190 145 L175 175 L150 120 Z" fill="url(#purpleGradient)"/>
+  
+  <!-- T shape (Blue) with digital pixel effect -->
+  <path d="M170 120 L280 120 L280 140 L235 140 L235 210 L215 210 L215 140 L170 140 Z" fill="url(#blueGradient)"/>
+  
+  <!-- AI Pixels -->
+  <rect x="290" y="120" width="10" height="10" fill="#240046" />
+  <rect x="305" y="125" width="8" height="8" fill="#5a189a" />
+  <rect x="285" y="135" width="12" height="12" fill="#9d4edd" />
+
+  <!-- Text "weavetales ai" -->
+  <text x="200" y="270" font-family="Arial, sans-serif" font-weight="bold" font-size="42" text-anchor="middle">
+    <tspan fill="#10002b">weavetales </tspan>
+    <tspan fill="#9d4edd">ai</tspan>
+  </text>
+
+  <!-- Tagline -->
+  <text x="200" y="310" font-family="Arial, sans-serif" font-weight="600" font-size="12" letter-spacing="4" fill="#5a189a" text-anchor="middle">
+    — EVERY THREAD TELLS A TALE —
+  </text>
+</svg>
