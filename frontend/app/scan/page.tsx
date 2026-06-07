@@ -3,14 +3,18 @@
 import { useState, useEffect, useRef } from "react";
 import styles from "./scan.module.css";
 import BottomNavigation from "@/components/BottomNavigation";
+import jsQR from "jsqr";
 
 export default function ScanPage() {
   const [scanned, setScanned] = useState(false);
+  const [scannedData, setScannedData] = useState<string | null>(null);
   const [hasCameraError, setHasCameraError] = useState(false);
   const videoRef = useRef<HTMLVideoElement>(null);
+  const canvasRef = useRef<HTMLCanvasElement>(null);
 
   useEffect(() => {
     let stream: MediaStream | null = null;
+    let animationFrameId: number;
 
     const startCamera = async () => {
       try {
@@ -19,10 +23,42 @@ export default function ScanPage() {
         });
         if (videoRef.current) {
           videoRef.current.srcObject = stream;
+          videoRef.current.setAttribute("playsinline", "true"); // required to tell iOS safari we don't want fullscreen
+          videoRef.current.play();
+          requestAnimationFrame(tick);
         }
       } catch (err) {
         console.error("Error accessing camera:", err);
         setHasCameraError(true);
+      }
+    };
+
+    const tick = () => {
+      if (videoRef.current && videoRef.current.readyState === videoRef.current.HAVE_ENOUGH_DATA) {
+        if (canvasRef.current) {
+          const canvas = canvasRef.current;
+          const video = videoRef.current;
+          canvas.height = video.videoHeight;
+          canvas.width = video.videoWidth;
+          const context = canvas.getContext("2d");
+          if (context) {
+            context.drawImage(video, 0, 0, canvas.width, canvas.height);
+            const imageData = context.getImageData(0, 0, canvas.width, canvas.height);
+            const code = jsQR(imageData.data, imageData.width, imageData.height, {
+              inversionAttempts: "dontInvert",
+            });
+
+            if (code && code.data) {
+              console.log("Found QR code", code.data);
+              setScannedData(code.data);
+              setScanned(true);
+              return; // Stop scanning once found
+            }
+          }
+        }
+      }
+      if (!scanned) {
+        animationFrameId = requestAnimationFrame(tick);
       }
     };
 
@@ -34,10 +70,12 @@ export default function ScanPage() {
       if (stream) {
         stream.getTracks().forEach(track => track.stop());
       }
+      cancelAnimationFrame(animationFrameId);
     };
   }, [scanned]);
 
   const handleSimulateScan = () => {
+    setScannedData("Simulated WeaveTales QR Code Data");
     setScanned(true);
   };
 
@@ -57,14 +95,17 @@ export default function ScanPage() {
                   Camera access denied or unavailable. Please allow camera permissions in your browser.
                 </div>
               ) : (
-                <video 
-                  ref={videoRef} 
-                  autoPlay 
-                  playsInline 
-                  muted 
-                  className={styles.cameraImage}
-                  style={{ objectFit: "cover", width: "100%", height: "100%" }}
-                />
+                <>
+                  <video 
+                    ref={videoRef} 
+                    autoPlay 
+                    playsInline 
+                    muted 
+                    className={styles.cameraImage}
+                    style={{ objectFit: "cover", width: "100%", height: "100%" }}
+                  />
+                  <canvas ref={canvasRef} style={{ display: "none" }} />
+                </>
               )}
               <div className={styles.cameraOverlay}></div>
             </div>
