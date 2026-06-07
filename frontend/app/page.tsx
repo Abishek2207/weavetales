@@ -492,12 +492,12 @@ export default function Home() {
               <h2 className="section-title">Try the Verification Scanner</h2>
               <p>Experience what the buyer sees. Scan the virtual tag to authenticate this product and unlock the artisan's story — in under two seconds.</p>
               <div style={{display:"flex", gap:"1rem", flexWrap:"wrap"}}>
-                <button className="btn-gold">
+                <Link href="/scan" className="btn-gold" style={{ textDecoration: "none" }}>
                   <svg viewBox="0 0 24 24" width="18" height="18" fill="currentColor">
                     <path d="M3 3h8v8H3zm2 2v4h4V5zM3 13h8v8H3zm2 2v4h4v-4zM13 3h8v8h-8zm2 2v4h4V5zM13 13h2v2h-2zm4 0h2v2h-2zm-2 2h2v2h-2zm4 0h2v2h-2zm-2 2h2v2h-2zm-4 2h2v2h-2zm4 0h2v2h-2z"/>
                   </svg>
-                  Activate Camera
-                </button>
+                  Activate Real Scanner
+                </Link>
                 <Link href="/chat" className="btn-ghost">Ask AI Guide</Link>
               </div>
             </div>
