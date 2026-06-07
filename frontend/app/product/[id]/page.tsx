@@ -5,10 +5,36 @@ import Link from "next/link";
 
 const API = "http://localhost:8000/api";
 
-interface Story { id: number; generated_text: string; tags: string; }
-interface Artisan { name: string; location: string; craft: string; bio: string; years_of_experience: number; }
+interface Story {
+  id: number;
+  product_id: number;
+  generated_text: string;
+  tags: string;
+  audio_url?: string;
+}
+
+interface Artisan {
+  id: number;
+  name: string;
+  location: string;
+  craft: string;
+  bio: string;
+  years_of_experience: number;
+}
+
 interface Recommendation { product_id: number; title: string; image_url: string; price: number; artisan_name: string; reason: string; }
-interface Product { id: number; title: string; material: string; price: number; image_url: string; artisan: Artisan; story: Story | null; }
+
+interface Product {
+  id: number;
+  title: string;
+  material: string;
+  price: number;
+  image_url: string;
+  artisan_id: number;
+  artisan: Artisan;
+  blockchain_hash?: string;
+  story: Story | null;
+}
 
 type Tab = "story" | "reel" | "translate";
 
