@@ -107,8 +107,11 @@ export default function AdminPage() {
 
   return (
     <div style={{ maxWidth: 900, margin: "4rem auto", padding: "2rem" }}>
-      <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center", marginBottom: "3rem" }}>
-        <h1 style={{ color: "var(--gold)" }}>WeaveTales Admin Dashboard</h1>
+        <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center", marginBottom: "3rem" }}>
+        <div style={{ display: "flex", alignItems: "center", gap: "1rem" }}>
+          <img src="/logo.svg" alt="WeaveTales AI" style={{ height: "48px", objectFit: "contain" }} />
+          <h1 style={{ color: "var(--gold)", margin: 0 }}>Admin Dashboard</h1>
+        </div>
         <button className="btn-ghost" onClick={handleLogout}>Logout</button>
       </div>
 

@@ -8,6 +8,16 @@ const playfair = Playfair_Display({ variable: "--font-playfair", subsets: ["lati
 export const metadata: Metadata = {
   title: "WeaveTales AI — Heritage Handlooms, Powered by AI",
   description: "Discover authentic Indian handloom textiles. Every thread has a story. AI-powered storytelling, cultural knowledge, and artisan connection.",
+  icons: {
+    icon: "/logo.svg",
+    shortcut: "/logo.svg",
+    apple: "/logo.svg",
+  },
+  openGraph: {
+    title: "WeaveTales AI — Heritage Handlooms, Powered by AI",
+    description: "Discover authentic Indian handloom textiles. Every thread has a story.",
+    images: ["/logo.svg"],
+  },
 };
 
 import CinematicLayout from "@/components/CinematicLayout";
