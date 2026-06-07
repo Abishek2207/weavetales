@@ -558,9 +558,7 @@ export default function Home() {
           <div className="footer-main">
             <div className="footer-brand">
               <div className="wt-logo" style={{fontSize:"1.3rem"}}>
-                <div className="wt-logo-mark">W</div>
-                <span className="wt-logo-text">WeaveTales</span>
-                <span className="wt-logo-ai">AI</span>
+                <img src="/logo.svg" alt="WeaveTales AI Logo" style={{ height: '36px', objectFit: 'contain' }} />
               </div>
               <p>Transforming every handloom into an immersive digital experience. Bridging the gap between India's living heritage and the modern world.</p>
               <div className="footer-socials">

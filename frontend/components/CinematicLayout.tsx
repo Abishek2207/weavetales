@@ -87,9 +87,7 @@ export default function CinematicLayout({ children }: { children: React.ReactNod
       <nav className={`wt-navbar${scrollY > 60 ? " scrolled" : ""}`}>
         <Link href="/">
           <div className="wt-logo">
-            <div className="wt-logo-mark">W</div>
-            <span className="wt-logo-text">WeaveTales</span>
-            <span className="wt-logo-ai">AI</span>
+            <img src="/logo.svg" alt="WeaveTales AI Logo" style={{ height: '40px', objectFit: 'contain' }} />
           </div>
         </Link>
 
