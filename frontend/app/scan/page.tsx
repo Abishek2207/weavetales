@@ -1,11 +1,41 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useEffect, useRef } from "react";
 import styles from "./scan.module.css";
 import BottomNavigation from "@/components/BottomNavigation";
 
 export default function ScanPage() {
   const [scanned, setScanned] = useState(false);
+  const [hasCameraError, setHasCameraError] = useState(false);
+  const videoRef = useRef<HTMLVideoElement>(null);
+
+  useEffect(() => {
+    let stream: MediaStream | null = null;
+
+    const startCamera = async () => {
+      try {
+        stream = await navigator.mediaDevices.getUserMedia({
+          video: { facingMode: "environment" }
+        });
+        if (videoRef.current) {
+          videoRef.current.srcObject = stream;
+        }
+      } catch (err) {
+        console.error("Error accessing camera:", err);
+        setHasCameraError(true);
+      }
+    };
+
+    if (!scanned) {
+      startCamera();
+    }
+
+    return () => {
+      if (stream) {
+        stream.getTracks().forEach(track => track.stop());
+      }
+    };
+  }, [scanned]);
 
   const handleSimulateScan = () => {
     setScanned(true);
@@ -21,13 +51,21 @@ export default function ScanPage() {
       <div className={styles.viewfinderArea}>
         {!scanned ? (
           <>
-            {/* Simulated camera background */}
             <div className={styles.cameraFeed}>
-              <img
-                src="https://images.unsplash.com/photo-1582561424760-0321d6daa242?auto=format&fit=crop&q=80&w=800"
-                alt="Camera feed"
-                className={styles.cameraImage}
-              />
+              {hasCameraError ? (
+                <div style={{ color: "white", padding: "20px", textAlign: "center", marginTop: "40%" }}>
+                  Camera access denied or unavailable. Please allow camera permissions in your browser.
+                </div>
+              ) : (
+                <video 
+                  ref={videoRef} 
+                  autoPlay 
+                  playsInline 
+                  muted 
+                  className={styles.cameraImage}
+                  style={{ objectFit: "cover", width: "100%", height: "100%" }}
+                />
+              )}
               <div className={styles.cameraOverlay}></div>
             </div>
 
