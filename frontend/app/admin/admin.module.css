@@ -1,0 +1,188 @@
+.adminContainer {
+  flex: 1;
+  height: 100vh;
+  background-color: var(--background);
+  display: flex;
+  flex-direction: column;
+}
+
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 32px 24px 16px;
+  border-bottom: 1px solid var(--surface);
+}
+
+.title {
+  font-size: 1.5rem;
+  color: var(--text-main);
+}
+
+.subtitle {
+  font-size: 0.85rem;
+  color: var(--primary);
+  margin-top: 2px;
+}
+
+.adminAvatar {
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, var(--primary), #8B6914);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.1rem;
+  font-weight: 700;
+  color: #000;
+  font-family: var(--font-heading);
+}
+
+.scrollArea {
+  flex: 1;
+  overflow-y: auto;
+  scrollbar-width: none;
+}
+.scrollArea::-webkit-scrollbar { display: none; }
+
+.metricsGrid {
+  display: flex;
+  gap: 12px;
+  padding: 24px;
+}
+
+.metricCard {
+  flex: 1;
+  background: var(--surface);
+  border-radius: 12px;
+  padding: 16px 12px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 6px;
+  text-align: center;
+}
+
+.metricIcon {
+  font-size: 1.4rem;
+}
+
+.metricValue {
+  font-size: 1.1rem;
+  color: var(--primary);
+  font-family: var(--font-heading);
+}
+
+.metricLabel {
+  font-size: 0.65rem;
+  color: var(--text-muted);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+.section {
+  padding: 0 24px 24px;
+}
+
+.sectionTitle {
+  font-size: 1rem;
+  color: var(--text-main);
+  margin-bottom: 16px;
+}
+
+.actionsGrid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 12px;
+}
+
+.actionBtn {
+  background: var(--surface);
+  border: none;
+  border-radius: 12px;
+  padding: 20px 16px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.actionBtn:hover {
+  border: 1px solid var(--primary);
+  background: rgba(212,175,55,0.08);
+}
+
+.actionBtn span:first-child {
+  font-size: 1.5rem;
+}
+
+.actionBtn span:last-child {
+  font-size: 0.8rem;
+  color: var(--text-main);
+  font-family: var(--font-body);
+}
+
+.orderRow {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  padding: 16px;
+  background: var(--surface);
+  border-radius: 10px;
+  margin-bottom: 10px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.orderChecked {
+  opacity: 0.5;
+  text-decoration: line-through;
+}
+
+.orderCheck {
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+  border: 2px solid var(--primary);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 0.8rem;
+  color: var(--primary);
+  flex-shrink: 0;
+  transition: background 0.2s ease;
+}
+
+.orderChecked .orderCheck {
+  background: var(--primary);
+  color: #000;
+}
+
+.orderInfo { flex: 1; }
+
+.orderProduct {
+  font-size: 0.9rem;
+  color: var(--text-main);
+  font-weight: 600;
+  margin-bottom: 3px;
+}
+
+.orderBuyer {
+  font-size: 0.75rem;
+  color: var(--text-muted);
+}
+
+.statusBadge {
+  font-size: 0.7rem;
+  padding: 4px 10px;
+  border-radius: 10px;
+  text-transform: capitalize;
+  font-weight: 600;
+}
+
+.pending { background: rgba(251,191,36,0.15); color: #fbbf24; }
+.shipped { background: rgba(96,165,250,0.15); color: #60a5fa; }
+.delivered { background: rgba(74,222,128,0.15); color: #4ade80; }

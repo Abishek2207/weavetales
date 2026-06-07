@@ -1,0 +1,154 @@
+.mapContainer {
+  flex: 1;
+  height: 100vh;
+  background-color: var(--background);
+  display: flex;
+  flex-direction: column;
+  position: relative;
+}
+
+.header {
+  padding: 32px 24px 16px;
+  z-index: 5;
+}
+
+.title {
+  font-size: 2rem;
+  color: var(--primary);
+  margin-bottom: 4px;
+}
+
+.subtitle {
+  color: var(--text-muted);
+  font-size: 0.9rem;
+}
+
+.mapArea {
+  flex: 1;
+  position: relative;
+  min-height: 280px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.mapSvg {
+  width: 280px;
+  height: 350px;
+  filter: drop-shadow(0 0 20px rgba(212,175,55,0.1));
+}
+
+.pin {
+  position: absolute;
+  transform: translate(-50%, -50%);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  cursor: pointer;
+}
+
+.pinDot {
+  position: relative;
+  width: 14px;
+  height: 14px;
+  border-radius: 50%;
+  background: var(--primary);
+  box-shadow: 0 0 8px var(--primary);
+}
+
+.pinPulse {
+  position: absolute;
+  inset: -4px;
+  border-radius: 50%;
+  border: 2px solid var(--primary);
+  animation: pulse 2s ease-in-out infinite;
+  opacity: 0.5;
+}
+
+@keyframes pulse {
+  0%, 100% { transform: scale(1); opacity: 0.5; }
+  50% { transform: scale(1.6); opacity: 0; }
+}
+
+.pinLabel {
+  margin-top: 6px;
+  background: rgba(26,26,26,0.9);
+  border: 1px solid rgba(212,175,55,0.4);
+  border-radius: 4px;
+  padding: 3px 8px;
+}
+
+.pinName {
+  font-size: 0.65rem;
+  color: var(--text-main);
+  white-space: nowrap;
+}
+
+.drawer {
+  background-color: var(--surface);
+  border-radius: 24px 24px 0 0;
+  padding: 16px 24px 120px;
+  max-height: 45%;
+  overflow-y: auto;
+  scrollbar-width: none;
+}
+
+.drawer::-webkit-scrollbar { display: none; }
+
+.drawerHandle {
+  width: 40px;
+  height: 4px;
+  background: rgba(255,255,255,0.2);
+  border-radius: 2px;
+  margin: 0 auto 20px;
+}
+
+.drawerTitle {
+  font-size: 1.1rem;
+  color: var(--text-main);
+  margin-bottom: 16px;
+}
+
+.regionList { display: flex; flex-direction: column; gap: 12px; }
+
+.regionCard {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 12px;
+  background: var(--background);
+  border-radius: 10px;
+  cursor: pointer;
+}
+
+.regionDot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: var(--primary);
+  flex-shrink: 0;
+}
+
+.regionInfo {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.regionName {
+  font-size: 0.95rem;
+  color: var(--text-main);
+  font-weight: 600;
+}
+
+.regionStyle {
+  font-size: 0.75rem;
+  color: var(--text-muted);
+}
+
+.regionCount {
+  font-size: 0.8rem;
+  color: var(--primary);
+  white-space: nowrap;
+}
